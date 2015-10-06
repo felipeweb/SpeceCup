@@ -4,7 +4,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -17,10 +16,11 @@ public class Equipe {
 	@NotNull
 	private String turma;
 	@NotNull
-	private LocalDateTime dataLancamento;
-	@NotNull
 	@OneToMany
 	private List<Aluno> alunos;
+	@NotNull
+	@OneToMany
+	private List<Lancamento> lancamentos;
 
 	/**
 	 * @deprecated JPA eyes only
@@ -29,11 +29,11 @@ public class Equipe {
 		this(null, null, null, null);
 	}
 
-	public Equipe(String nome, String turma, LocalDateTime dataLancamento, List<Aluno> alunos) {
+	public Equipe(String nome, String turma, List<Aluno> alunos, List<Lancamento> lancamentos) {
 		this.nome = nome;
 		this.turma = turma;
-		this.dataLancamento = dataLancamento;
 		this.alunos = alunos;
+		this.lancamentos = lancamentos;
 	}
 
 	public String getNome() {
@@ -52,19 +52,19 @@ public class Equipe {
 		this.turma = turma;
 	}
 
-	public LocalDateTime getDataLancamento() {
-		return dataLancamento;
-	}
-
-	public void setDataLancamento(LocalDateTime dataLancamento) {
-		this.dataLancamento = dataLancamento;
-	}
-
 	public List<Aluno> getAlunos() {
 		return alunos;
 	}
 
 	public void setAlunos(List<Aluno> alunos) {
 		this.alunos = alunos;
+	}
+
+	public List<Lancamento> getLancamentos() {
+		return lancamentos;
+	}
+
+	public void setLancamentos(List<Lancamento> lancamentos) {
+		this.lancamentos = lancamentos;
 	}
 }

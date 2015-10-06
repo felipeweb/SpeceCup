@@ -25,11 +25,6 @@
             <artifactId>hibernate-validator</artifactId>
             <version>5.2.2.Final</version>
         </dependency>
-        <dependency>
-            <groupId>br.com.otavio</groupId>
-            <artifactId>jpa-javatime</artifactId>
-            <version>0.2</version>
-        </dependency>
     </dependencies>
 
 </project>
