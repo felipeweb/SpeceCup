@@ -2,8 +2,10 @@ package br.com.fiap.starcrap.models;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * Created by felipeweb on 10/5/15.
@@ -16,11 +18,22 @@ public class Equipe {
 	private String turma;
 	@NotNull
 	private LocalDateTime dataLancamento;
+	@NotNull
+	@OneToMany
+	private List<Aluno> alunos;
 
-	public Equipe(String nome, String turma, LocalDateTime dataLancamento) {
+	/**
+	 * @deprecated JPA eyes only
+	 */
+	protected Equipe() {
+		this(null, null, null, null);
+	}
+
+	public Equipe(String nome, String turma, LocalDateTime dataLancamento, List<Aluno> alunos) {
 		this.nome = nome;
 		this.turma = turma;
 		this.dataLancamento = dataLancamento;
+		this.alunos = alunos;
 	}
 
 	public String getNome() {
@@ -45,5 +58,13 @@ public class Equipe {
 
 	public void setDataLancamento(LocalDateTime dataLancamento) {
 		this.dataLancamento = dataLancamento;
+	}
+
+	public List<Aluno> getAlunos() {
+		return alunos;
+	}
+
+	public void setAlunos(List<Aluno> alunos) {
+		this.alunos = alunos;
 	}
 }
