@@ -1,9 +1,6 @@
 package br.com.fiap.starcrap.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.NotNull;
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -20,13 +17,7 @@ public class Lancamento {
 	@NotNull
 	private LocalDateTime dataDoLancamento;
 	@NotNull
-	private BigDecimal distanciaDoAlvo;
-	@NotNull
-	private BigDecimal alguloDeLancamento;
-	@NotNull
 	private BigDecimal velocidadeDoVento;
-	@NotNull
-	private BigDecimal pesoDoFoguete;
 	private BigDecimal altitudeMaxima;
 	private BigDecimal velocidadeMaxima;
 	private Duration tempoDePropulsao;
@@ -37,16 +28,18 @@ public class Lancamento {
 	private BigDecimal altitudeDeEjecao;
 	private BigDecimal taxaDeDescida;
 	private Duration duracaoDoVoo;
+	@OneToOne
+	private Foguete foguete;
 
+	/**
+	 * @deprecated JPA eyes only
+	 */
 	protected Lancamento() {
-		this(null, null, null, null, null, null, null, null, null, null, null, null, null, null, null);
+		this(null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 
 	public Lancamento(LocalDateTime dataDoLancamento,
-					  BigDecimal distanciaDoAlvo,
-					  BigDecimal alguloDeLancamento,
 					  BigDecimal velocidadeDoVento,
-					  BigDecimal pesoDoFoguete,
 					  BigDecimal altitudeMaxima,
 					  BigDecimal velocidadeMaxima,
 					  Duration tempoDePropulsao,
@@ -56,12 +49,10 @@ public class Lancamento {
 					  Duration tempoDeEjecao,
 					  BigDecimal altitudeDeEjecao,
 					  BigDecimal taxaDeDescida,
-					  Duration duracaoDoVoo) {
+					  Duration duracaoDoVoo,
+					  Foguete foguete) {
 		this.dataDoLancamento = dataDoLancamento;
-		this.distanciaDoAlvo = distanciaDoAlvo;
-		this.alguloDeLancamento = alguloDeLancamento;
 		this.velocidadeDoVento = velocidadeDoVento;
-		this.pesoDoFoguete = pesoDoFoguete;
 		this.altitudeMaxima = altitudeMaxima;
 		this.velocidadeMaxima = velocidadeMaxima;
 		this.tempoDePropulsao = tempoDePropulsao;
@@ -72,6 +63,7 @@ public class Lancamento {
 		this.altitudeDeEjecao = altitudeDeEjecao;
 		this.taxaDeDescida = taxaDeDescida;
 		this.duracaoDoVoo = duracaoDoVoo;
+		this.foguete = foguete;
 	}
 
 	public Long getId() {
@@ -90,36 +82,12 @@ public class Lancamento {
 		this.dataDoLancamento = dataDoLancamento;
 	}
 
-	public BigDecimal getDistanciaDoAlvo() {
-		return distanciaDoAlvo;
-	}
-
-	public void setDistanciaDoAlvo(BigDecimal distanciaDoAlvo) {
-		this.distanciaDoAlvo = distanciaDoAlvo;
-	}
-
-	public BigDecimal getAlguloDeLancamento() {
-		return alguloDeLancamento;
-	}
-
-	public void setAlguloDeLancamento(BigDecimal alguloDeLancamento) {
-		this.alguloDeLancamento = alguloDeLancamento;
-	}
-
 	public BigDecimal getVelocidadeDoVento() {
 		return velocidadeDoVento;
 	}
 
 	public void setVelocidadeDoVento(BigDecimal velocidadeDoVento) {
 		this.velocidadeDoVento = velocidadeDoVento;
-	}
-
-	public BigDecimal getPesoDoFoguete() {
-		return pesoDoFoguete;
-	}
-
-	public void setPesoDoFoguete(BigDecimal pesoDoFoguete) {
-		this.pesoDoFoguete = pesoDoFoguete;
 	}
 
 	public BigDecimal getAltitudeMaxima() {
