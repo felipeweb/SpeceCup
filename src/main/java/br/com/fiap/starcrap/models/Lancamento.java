@@ -28,6 +28,7 @@ public class Lancamento {
 	private BigDecimal altitudeDeEjecao;
 	private BigDecimal taxaDeDescida;
 	private Duration duracaoDoVoo;
+	@NotNull
 	@OneToOne
 	private Foguete foguete;
 
@@ -168,5 +169,13 @@ public class Lancamento {
 
 	public void setDuracaoDoVoo(Duration duracaoDoVoo) {
 		this.duracaoDoVoo = duracaoDoVoo;
+	}
+
+	public Foguete getFoguete() {
+		return foguete;
+	}
+
+	public void setFoguete(Foguete foguete) {
+		this.foguete = foguete;
 	}
 }
