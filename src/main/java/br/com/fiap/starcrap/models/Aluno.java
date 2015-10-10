@@ -14,10 +14,8 @@ public class Aluno {
 	@NotNull
 	private String nome;
 
-	/**
-	 * @deprecated JPA eyes only
-	 */
-	protected Aluno() {
+       
+	public Aluno() {
 		this(null, null);
 	}
 

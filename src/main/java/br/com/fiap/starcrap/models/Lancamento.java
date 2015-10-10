@@ -32,10 +32,7 @@ public class Lancamento {
 	@OneToOne
 	private Foguete foguete;
 
-	/**
-	 * @deprecated JPA eyes only
-	 */
-	protected Lancamento() {
+        public Lancamento() {
 		this(null, null, null, null, null, null, null, null, null, null, null, null, null);
 	}
 

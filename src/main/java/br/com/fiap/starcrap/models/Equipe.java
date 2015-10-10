@@ -18,14 +18,11 @@ public class Equipe {
 	@NotNull
 	@OneToMany
 	private List<Aluno> alunos;
-	@NotNull
+
 	@OneToMany
 	private List<Lancamento> lancamentos;
 
-	/**
-	 * @deprecated JPA eyes only
-	 */
-	protected Equipe() {
+	public Equipe() {
 		this(null, null, null, null);
 	}
 

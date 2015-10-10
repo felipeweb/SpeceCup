@@ -21,10 +21,8 @@ public class Foguete {
 	@NotNull
 	private BigDecimal pesoDoFoguete;
 
-	/**
-	 * @deprecated JPA eyes only
-	 */
-	protected Foguete() {
+	
+	public Foguete() {
 		this(null, null, null);
 	}
 
