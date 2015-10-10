@@ -209,6 +209,7 @@ public class Principal extends javax.swing.JFrame {
         equipe.setAlunos(alunos);
         equipeDAO.insert(equipe);
         manager.getTransaction().commit();
+        populaGrupoList();
 
     }//GEN-LAST:event_grupoButtonActionPerformed
 

@@ -11,11 +11,11 @@
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://186.202.152.42:3306/soulseguros1_am" />
+                      value="jdbc:mysql://localhost/starcrap" />
             <property name="javax.persistence.jdbc.user"
-                      value="souls_am" />
+                      value="root" />
             <property name="javax.persistence.jdbc.password"
-                      value="amfiap" />
+                      value="root" />
 
             <!--  propriedades do hibernate -->
             <property name="hibernate.dialect"
