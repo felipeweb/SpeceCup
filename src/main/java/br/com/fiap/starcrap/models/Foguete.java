@@ -15,7 +15,6 @@ public class Foguete {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@NotNull
 	private BigDecimal distanciaDoAlvo;
 	@NotNull
 	private BigDecimal alguloDeLancamento;
