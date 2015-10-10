@@ -50,11 +50,6 @@ public class Pesquisar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         condicaoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Maior que", "Menor que", "igual a" }));
-        condicaoCB.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                condicaoCBActionPerformed(evt);
-            }
-        });
 
         opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "colocar o resto", "altura maxima", "velocidade maxima", "tempo de voo" }));
 
@@ -112,10 +107,6 @@ public class Pesquisar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void condicaoCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_condicaoCBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_condicaoCBActionPerformed
 
     /**
      * @param args the command line arguments
