@@ -9,34 +9,39 @@ import javax.validation.constraints.NotNull;
  */
 @Entity
 public class Aluno {
-	@Id
-	private String rm;
-	@NotNull
-	private String nome;
 
-       
-	public Aluno() {
-		this(null, null);
-	}
+    @Id
+    private String rm;
+    @NotNull
+    private String nome;
 
-	public Aluno(String rm, String nome) {
-		this.rm = rm;
-		this.nome = nome;
-	}
+    public Aluno() {
+        this(null, null);
+    }
 
-	public String getRm() {
-		return rm;
-	}
+    public Aluno(String rm, String nome) {
+        this.rm = rm;
+        this.nome = nome;
+    }
 
-	public void setRm(String rm) {
-		this.rm = rm;
-	}
+    public String getRm() {
+        return rm;
+    }
 
-	public String getNome() {
-		return nome;
-	}
+    public void setRm(String rm) {
+        this.rm = rm;
+    }
 
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    @Override
+    public String toString() {
+        return nome + " - " + rm;
+    }
 }

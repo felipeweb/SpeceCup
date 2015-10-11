@@ -25,6 +25,7 @@ public class Principal extends javax.swing.JFrame {
     private EntityManager manager;
     private EquipeDAO equipeDAO;
     private AlunoDAO alunoDAO;
+    private Equipe equipeSelecionada;
 
     public Principal() {
         this.manager = Persistence.createEntityManagerFactory("default").createEntityManager();
@@ -32,7 +33,7 @@ public class Principal extends javax.swing.JFrame {
         this.equipeDAO = new EquipeDAO(manager);
         initComponents();
         populaGrupoList();
-        
+
     }
 
     /**
@@ -48,7 +49,7 @@ public class Principal extends javax.swing.JFrame {
         buttonPesquisar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         grupoButton = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        removerButton = new javax.swing.JButton();
         grupoScroll = new javax.swing.JScrollPane();
         grupoList = new javax.swing.JList();
         jLabel2 = new javax.swing.JLabel();
@@ -56,11 +57,17 @@ public class Principal extends javax.swing.JFrame {
         componentesScroll = new javax.swing.JScrollPane();
         componentesList = new javax.swing.JList();
         jLabel3 = new javax.swing.JLabel();
+        numComponentes = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         lancamentoButton.setText("Lançamento");
         lancamentoButton.setEnabled(false);
+        lancamentoButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lancamentoButtonActionPerformed(evt);
+            }
+        });
 
         buttonPesquisar.setText("Pesquisa");
 
@@ -73,9 +80,19 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
-        jButton2.setText("Remover");
+        removerButton.setText("Remover");
+        removerButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                removerButtonActionPerformed(evt);
+            }
+        });
 
         grupoList.setToolTipText("");
+        grupoList.addListSelectionListener(new javax.swing.event.ListSelectionListener() {
+            public void valueChanged(javax.swing.event.ListSelectionEvent evt) {
+                grupoListValueChanged(evt);
+            }
+        });
         grupoScroll.setViewportView(grupoList);
 
         jLabel2.setText("Grupo");
@@ -92,7 +109,7 @@ public class Principal extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addComponent(grupoButton)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2))
+                                .addComponent(removerButton))
                             .addComponent(grupoScroll, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(89, 89, 89)
@@ -109,7 +126,7 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(grupoButton)
-                    .addComponent(jButton2))
+                    .addComponent(removerButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -129,14 +146,18 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(componentesScroll, javax.swing.GroupLayout.PREFERRED_SIZE, 189, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(46, 46, 46)
-                        .addComponent(jLabel3)))
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(numComponentes)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel3)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(numComponentes))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(componentesScroll, javax.swing.GroupLayout.DEFAULT_SIZE, 162, Short.MAX_VALUE)
                 .addContainerGap())
@@ -183,47 +204,113 @@ public class Principal extends javax.swing.JFrame {
         manager.getTransaction().begin();
 
         String grupo = JOptionPane.showInputDialog("Digite o nome do grupo:");
-        Equipe equipe = new Equipe();
-        equipe.setNome(grupo);
+        if (grupo != null) {
+            Equipe equipe = new Equipe();
+            equipe.setNome(grupo);
 
-        String turma = JOptionPane.showInputDialog("Digite o nome da turma:");
-        equipe.setTurma(turma);
+            String turma = JOptionPane.showInputDialog("Digite o nome da turma:");
 
-        int nAlunos = Integer.parseInt(JOptionPane.showInputDialog("Digite o número de alunos que haverá no grupo:"));
+            if (turma != null) {
+                equipe.setTurma(turma);
+                int nAlunos = 0;
+                try {
+                    nAlunos = Integer.parseInt(JOptionPane.showInputDialog("Digite o número de alunos do grupo:"));
+                } catch (NumberFormatException e) {
+                    JOptionPane.showMessageDialog(null, "Digite somente números inteiros");
+                }
+                if (nAlunos > 0) {
+                    List<Aluno> alunos = new ArrayList<>();
 
-        List<Aluno> alunos = new ArrayList<>();
+                    for (int k = 0; k < nAlunos; k++) {
+                        Aluno aluno = new Aluno();
+                        String alunome = JOptionPane.showInputDialog("Digite o nome do " + (k + 1) + "º aluno:");
+                        if (alunome == null) {
+                            break;
+                        } else {
 
-        for (int k = 0; k < nAlunos; k++) {
-            Aluno aluno = new Aluno();
-            String alunome = JOptionPane.showInputDialog("Digite o nome do " + (k + 1) + "º aluno:");
-            String rm = JOptionPane.showInputDialog("Digite o rm do aluno:");
+                            String rm = JOptionPane.showInputDialog("Digite o rm do aluno:");
+                            if (rm == null) {
+                                break;
+                            } else {
+                                aluno.setNome(alunome);
+                                aluno.setRm(rm);
 
-            aluno.setNome(alunome);
-            aluno.setRm(rm);
+                                alunoDAO.insert(aluno);
 
-            alunoDAO.insert(aluno);
+                                alunos.add(aluno);
+                            }
 
-            alunos.add(aluno);
+                            equipe.setAlunos(alunos);
+                            equipeDAO.insert(equipe);
+                            manager.getTransaction().commit();
+                            populaGrupoList();
+                        }
+                    }
+                }
+            }
         }
-
-        equipe.setAlunos(alunos);
-        equipeDAO.insert(equipe);
-        manager.getTransaction().commit();
-        populaGrupoList();
-
+        if(manager.getTransaction().isActive()) {
+            manager.getTransaction().commit();
+        }
     }//GEN-LAST:event_grupoButtonActionPerformed
 
+    private void grupoListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_grupoListValueChanged
+        if (!grupoList.isSelectionEmpty()) {
+            equipeSelecionada = (Equipe) grupoList.getSelectedValue();
+            populaComponentesList(equipeSelecionada.getNome());
+            numComponentes.setText("(" + String.valueOf(equipeSelecionada.getAlunos().size()) + ")");
+            if (!lancamentoButton.isEnabled()) {
+                lancamentoButton.setEnabled(true);
+            }
+        } else {
+            numComponentes.setText("");
+        }
+    }//GEN-LAST:event_grupoListValueChanged
+
+    private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
+        manager.getTransaction().begin();
+        for (Aluno aluno : equipeSelecionada.getAlunos()) {
+            alunoDAO.delete(aluno);
+        }
+        equipeDAO.delete(equipeSelecionada);
+        manager.getTransaction().commit();
+        populaGrupoList();
+        limpaComponentesList();
+    }//GEN-LAST:event_removerButtonActionPerformed
+
+    private void lancamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancamentoButtonActionPerformed
+        Lancamento lancamento = new Lancamento();
+        lancamento.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_lancamentoButtonActionPerformed
+
     private void populaGrupoList() {
-        DefaultListModel<String> listModel = new DefaultListModel<>();
+        DefaultListModel<Equipe> listModel = new DefaultListModel<>();
         List<Equipe> equipes = equipeDAO.findAll();
         if (equipes != null || !equipes.isEmpty()) {
             for (Equipe equipe : equipes) {
-                listModel.addElement(equipe.getNome());
+                listModel.addElement(equipe);
             }
         }
         grupoList.setModel(listModel);
     }
 
+    private void populaComponentesList(String nomeEquipe) {
+        DefaultListModel<Aluno> listModel = new DefaultListModel<>();
+        Equipe equipe = equipeDAO.findByTeamName(nomeEquipe);
+        if (equipe != null) {
+            for (Aluno aluno : equipe.getAlunos()) {
+                listModel.addElement(aluno);
+            }
+        }
+        componentesList.setModel(listModel);
+    }
+
+    private void limpaComponentesList() {
+        DefaultListModel<Aluno> listModel = new DefaultListModel<>();
+        listModel.clear();
+        componentesList.setModel(listModel);
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
     private javax.swing.JList componentesList;
@@ -231,11 +318,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton grupoButton;
     private javax.swing.JList grupoList;
     private javax.swing.JScrollPane grupoScroll;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JButton lancamentoButton;
+    private javax.swing.JLabel numComponentes;
+    private javax.swing.JButton removerButton;
     // End of variables declaration//GEN-END:variables
 }
