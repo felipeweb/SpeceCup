@@ -1,7 +1,6 @@
 package br.com.fiap.starcrap.daos;
 
 import br.com.fiap.starcrap.models.Aluno;
-import java.util.List;
 
 import javax.persistence.EntityManager;
 

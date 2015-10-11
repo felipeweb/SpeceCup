@@ -249,9 +249,7 @@ public class Principal extends javax.swing.JFrame {
                 }
             }
         }
-        if(manager.getTransaction().isActive()) {
-            manager.getTransaction().commit();
-        }
+        fechaTransacao();
     }//GEN-LAST:event_grupoButtonActionPerformed
 
     private void grupoListValueChanged(javax.swing.event.ListSelectionEvent evt) {//GEN-FIRST:event_grupoListValueChanged
@@ -276,6 +274,7 @@ public class Principal extends javax.swing.JFrame {
         manager.getTransaction().commit();
         populaGrupoList();
         limpaComponentesList();
+        fechaTransacao();
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void lancamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancamentoButtonActionPerformed
@@ -310,6 +309,12 @@ public class Principal extends javax.swing.JFrame {
         DefaultListModel<Aluno> listModel = new DefaultListModel<>();
         listModel.clear();
         componentesList.setModel(listModel);
+    }
+    
+    private void fechaTransacao() {
+        if(manager.getTransaction().isActive()) {
+            manager.getTransaction().commit();
+        }
     }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton buttonPesquisar;
