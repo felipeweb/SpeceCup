@@ -5,16 +5,28 @@
  */
 package br.com.fiap.starcrap.forms;
 
+import br.com.fiap.starcrap.models.Foguete;
+import br.com.fiap.starcrap.models.Lancamento;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
 /**
  *
  * @author go
  */
 public class Altimetro extends javax.swing.JFrame {
 
+    private Foguete foguete;
+    private Lancamento lancamento;
+    private EntityManager manager;
+
     /**
      * Creates new form f
      */
-    public Altimetro() {
+    public Altimetro(Lancamento lancamento, Foguete foguete) {
+        this.manager = Persistence.createEntityManagerFactory("default").createEntityManager();
+        this.foguete = foguete;
+        this.lancamento = lancamento;
         initComponents();
     }
 

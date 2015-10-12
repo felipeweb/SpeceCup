@@ -17,7 +17,7 @@ public class Foguete {
 	private Long id;
 	private BigDecimal distanciaDoAlvo;
 	@NotNull
-	private BigDecimal alguloDeLancamento;
+	private BigDecimal anguloDeLancamento;
 	@NotNull
 	private BigDecimal pesoDoFoguete;
 
@@ -26,9 +26,9 @@ public class Foguete {
 		this(null, null, null);
 	}
 
-	public Foguete(BigDecimal distanciaDoAlvo, BigDecimal alguloDeLancamento, BigDecimal pesoDoFoguete) {
+	public Foguete(BigDecimal distanciaDoAlvo, BigDecimal anguloDeLancamento, BigDecimal pesoDoFoguete) {
 		this.distanciaDoAlvo = distanciaDoAlvo;
-		this.alguloDeLancamento = alguloDeLancamento;
+		this.anguloDeLancamento = anguloDeLancamento;
 		this.pesoDoFoguete = pesoDoFoguete;
 	}
 
@@ -48,12 +48,12 @@ public class Foguete {
 		this.distanciaDoAlvo = distanciaDoAlvo;
 	}
 
-	public BigDecimal getAlguloDeLancamento() {
-		return alguloDeLancamento;
+	public BigDecimal getAnguloDeLancamento() {
+		return anguloDeLancamento;
 	}
 
-	public void setAlguloDeLancamento(BigDecimal alguloDeLancamento) {
-		this.alguloDeLancamento = alguloDeLancamento;
+	public void setAnguloDeLancamento(BigDecimal anguloDeLancamento) {
+		this.anguloDeLancamento = anguloDeLancamento;
 	}
 
 	public BigDecimal getPesoDoFoguete() {

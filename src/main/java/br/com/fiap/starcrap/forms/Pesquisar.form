@@ -48,7 +48,7 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="condicaoCB" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Component id="valor" max="32767" attributes="0"/>
+                      <Component id="valor" pref="105" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
@@ -160,6 +160,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Voltar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="buttonVoltarActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>
