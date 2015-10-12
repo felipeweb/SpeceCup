@@ -11,7 +11,7 @@
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
-                      value="starcrap.cr1qi7gnhkaj.us-west-2.rds.amazonaws.com:3306/starcrap" />
+                      value="jdbc:mysql://starcrap.cr1qi7gnhkaj.us-west-2.rds.amazonaws.com:3306/starcrap" />
             <property name="javax.persistence.jdbc.user"
                       value="starcrap" />
             <property name="javax.persistence.jdbc.password"
