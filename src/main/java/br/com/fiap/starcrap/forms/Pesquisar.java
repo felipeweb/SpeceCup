@@ -129,7 +129,7 @@ public class Pesquisar extends javax.swing.JFrame {
     }//GEN-LAST:event_opcaoPesquisaCBActionPerformed
 
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
-        pesquisaAvancada(opcaoPesquisaCB.getSelectedItem().toString(), condicaoCB.getSelectedIndex(), Double.valueOf(valor.getText()));
+        pesquisaAvancada();
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
@@ -142,9 +142,8 @@ public class Pesquisar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }
 
-    private void pesquisaAvancada(String a, int b, double c) {
-        String aux;
-        //tratamento das informa��es
+    private void pesquisaAvancada() {
+        String a = opcaoPesquisaCB.getSelectedItem().toString();
 
         a = a.trim();
         a = a.replace("ã", "a");
@@ -152,30 +151,29 @@ public class Pesquisar extends javax.swing.JFrame {
         a = a.replace("á", "a");
         a = a.replace("é", "e");
         a = a.replace("ç", "c");
-        aux = a;
 
-        switch (b) {
+        switch (condicaoCB.getSelectedIndex()) {
             case 0:
-                aux += " > ";
+                a += " > ";
                 break;
             case 1:
-                aux += " < ";
+                a += " < ";
                 break;
             case 2:
-                aux += " = ";
+                a += " = ";
                 break;
             case 3:
-                aux += " >= ";
+                a += " >= ";
                 break;
             case 4:
-                aux += " <= ";
+                a += " <= ";
                 break;
             case 5:
-                aux += " != ";
+                a += " != ";
                 break;
         }
 
-        aux += c;
+        a += Double.valueOf(valor.getText());
         //usar aux pro m�todo de banco de dados
     }
     /**

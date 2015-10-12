@@ -23,7 +23,7 @@ public class Lancamento {
 	private Duration tempoDePropulsao;
 	private BigDecimal picoDeAceleracao;
 	private BigDecimal aceleracaoMedia;
-	private Duration tempoEntreApogeuEDescida;
+	private Duration tempoEntreApogeu;//EDescida
 	private Duration tempoDeEjecao;
 	private BigDecimal altitudeDeEjecao;
 	private BigDecimal taxaDeDescida;
@@ -56,7 +56,7 @@ public class Lancamento {
 		this.tempoDePropulsao = tempoDePropulsao;
 		this.picoDeAceleracao = picoDeAceleracao;
 		this.aceleracaoMedia = aceleracaoMedia;
-		this.tempoEntreApogeuEDescida = tempoEntreApogeuEDescida;
+		this.tempoEntreApogeu = tempoEntreApogeu;
 		this.tempoDeEjecao = tempoDeEjecao;
 		this.altitudeDeEjecao = altitudeDeEjecao;
 		this.taxaDeDescida = taxaDeDescida;
@@ -129,11 +129,11 @@ public class Lancamento {
 	}
 
 	public Duration getTempoEntreApogeuEDescida() {
-		return tempoEntreApogeuEDescida;
+		return tempoEntreApogeu;
 	}
 
-	public void setTempoEntreApogeuEDescida(Duration tempoEntreApogeuEDescida) {
-		this.tempoEntreApogeuEDescida = tempoEntreApogeuEDescida;
+	public void setTempoEntreApogeu(Duration tempoEntreApogeu) {
+		this.tempoEntreApogeu = tempoEntreApogeu;
 	}
 
 	public Duration getTempoDeEjecao() {
