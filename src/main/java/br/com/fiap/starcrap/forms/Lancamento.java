@@ -55,17 +55,11 @@ public class Lancamento extends javax.swing.JFrame {
 
         jLabel1.setText("Data");
 
-        jLabel2.setText("Distância do Alvo");
+        jLabel2.setText("Distï¿½ncia do Alvo");
 
-        jLabel3.setText("Ângulo do Lançamento");
+        jLabel3.setText("ï¿½ngulo do Lanï¿½amento");
 
         jLabel4.setText("Peso do Foguete");
-
-        data.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                dataActionPerformed(evt);
-            }
-        });
 
         jLabel6.setText("Velocidade do Vento");
 
@@ -123,9 +117,9 @@ public class Lancamento extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Lançamento");
+        jLabel5.setText("Lanï¿½amento");
 
-        btnFoguete.setText("Próximo");
+        btnFoguete.setText("Prï¿½ximo");
         btnFoguete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFogueteActionPerformed(evt);
