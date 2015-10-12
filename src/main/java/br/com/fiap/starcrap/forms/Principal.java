@@ -61,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lancamentoButton.setText("LanÃ§amento");
+        lancamentoButton.setText("Lançamento");
         lancamentoButton.setEnabled(false);
         lancamentoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -70,6 +70,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         buttonPesquisar.setText("Pesquisa");
+        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPesquisarActionPerformed(evt);
+            }
+        });
 
         jPanel2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
@@ -175,9 +180,7 @@ public class Principal extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(lancamentoButton)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(13, 13, 13)
-                        .addComponent(buttonPesquisar)))
+                    .addComponent(buttonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -282,6 +285,12 @@ public class Principal extends javax.swing.JFrame {
         lancamento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lancamentoButtonActionPerformed
+
+    private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        Pesquisar pesquisar = new Pesquisar();
+        pesquisar.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void populaGrupoList() {
         DefaultListModel<Equipe> listModel = new DefaultListModel<>();

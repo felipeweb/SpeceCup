@@ -5,11 +5,14 @@
  */
 package br.com.fiap.starcrap.forms;
 
+import java.awt.event.ActionEvent;
+import javax.swing.JOptionPane;
+
 /**
  * @author go
  */
 public class Pesquisar extends javax.swing.JFrame {
-
+        
 	/**
 	 * Creates new form Pesquisar
 	 */
@@ -48,13 +51,28 @@ public class Pesquisar extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        condicaoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Maior que", "Menor que", "igual a" }));
+        condicaoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Maior que", "Menor que", "Igual a", "Maior ou igual a", "Menor ou igual a", "Diferente de" }));
+        condicaoCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                condicaoCBActionPerformed(evt);
+            }
+        });
 
-        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "colocar o resto", "altura maxima", "velocidade maxima", "tempo de voo" }));
+        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Distância até o alvo", "Ângulo do lançamento", "Velocidade do vento", "Peso do foguete", "Altitude máxima", "Velocidade máxima", "Tempo de propulsão", "Pico de Aceleração", "Aceleração media", "Tempo entre apogeu e descida", "Tempo de ejeção", "Altitude de ejeção", "Taxa de descida", "Duração do voo" }));
+        opcaoPesquisaCB.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                opcaoPesquisaCBActionPerformed(evt);
+            }
+        });
 
         jScrollPane1.setViewportView(jList1);
 
         buttonPesquisar.setText("Pesquisar");
+        buttonPesquisar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                buttonPesquisarActionPerformed(evt);
+            }
+        });
 
         buttonVoltar.setText("Voltar");
 
@@ -69,16 +87,15 @@ public class Pesquisar extends javax.swing.JFrame {
                         .addComponent(opcaoPesquisaCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(condicaoCB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
-                        .addComponent(valor, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(22, 22, 22))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(valor))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(buttonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(buttonVoltar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
-                        .addComponent(jScrollPane1)
-                        .addContainerGap())))
+                        .addComponent(jScrollPane1)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -102,6 +119,54 @@ public class Pesquisar extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void opcaoPesquisaCBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_opcaoPesquisaCBActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_opcaoPesquisaCBActionPerformed
+
+    private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
+        pesquisaAvancada(opcaoPesquisaCB.getSelectedItem().toString(),condicaoCB.getSelectedIndex(),Double.valueOf( valor.getText() ));
+    }//GEN-LAST:event_buttonPesquisarActionPerformed
+    
+    private void condicaoCBActionPerformed(java.awt.event.ActionEvent evt){
+        // TODO add your handling code here:
+    }
+    
+    private void pesquisaAvancada(String a,int b, double c){
+        String aux;
+        //tratamento das informações
+        
+        a=a.trim();
+        a=a.replace("â","a");
+        a=a.replace("ã","a");
+        a=a.replace("á","a");
+        a=a.replace("é","e");
+        a=a.replace("ç","c");
+        aux=a;
+        
+        switch(b){
+            case 0:
+                aux += " > ";
+            break;
+            case 1:
+                aux += " < ";
+            break;
+            case 2:
+                aux += " = ";
+            break;
+            case 3:
+                aux += " >= ";
+            break;
+            case 4:
+                aux += " <= ";
+            break;
+            case 5:
+                aux += " != ";
+            break;
+        }
+        
+        aux+=c;
+        //usar aux pro método de banco de dados
+    }
 	/**
 	 * @param args the command line arguments
 	 */
