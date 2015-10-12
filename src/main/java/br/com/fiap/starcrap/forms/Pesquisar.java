@@ -58,7 +58,7 @@ public class Pesquisar extends javax.swing.JFrame {
             }
         });
 
-        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Distância até o alvo", "Ângulo do lançamento", "Velocidade do vento", "Peso do foguete", "Altitude máxima", "Velocidade máxima", "Tempo de propulsão", "Pico de Aceleração", "Aceleração media", "Tempo entre apogeu e descida", "Tempo de ejeção", "Altitude de ejeção", "Taxa de descida", "Duração do voo" }));
+        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "DistÃ¢ncia atÃ© o alvo", "Ã‚ngulo do lanÃ§amento", "Velocidade do vento", "Peso do foguete", "Altitude mÃ¡xima", "Velocidade mÃ¡xima", "Tempo de propulsÃ£o", "Pico de AceleraÃ§Ã£o", "AceleraÃ§Ã£o media", "Tempo entre apogeu e descida", "Tempo de ejeÃ§Ã£o", "Altitude de ejeÃ§Ã£o", "Taxa de descida", "DuraÃ§Ã£o do voo" }));
         opcaoPesquisaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcaoPesquisaCBActionPerformed(evt);
@@ -133,14 +133,14 @@ public class Pesquisar extends javax.swing.JFrame {
     
     private void pesquisaAvancada(String a,int b, double c){
         String aux;
-        //tratamento das informações
+        //tratamento das informaï¿½ï¿½es
         
         a=a.trim();
-        a=a.replace("â","a");
-        a=a.replace("ã","a");
-        a=a.replace("á","a");
-        a=a.replace("é","e");
-        a=a.replace("ç","c");
+        a=a.replace("ï¿½","a");
+        a=a.replace("ï¿½","a");
+        a=a.replace("ï¿½","a");
+        a=a.replace("ï¿½","e");
+        a=a.replace("ï¿½","c");
         aux=a;
         
         switch(b){
@@ -165,7 +165,7 @@ public class Pesquisar extends javax.swing.JFrame {
         }
         
         aux+=c;
-        //usar aux pro método de banco de dados
+        //usar aux pro mï¿½todo de banco de dados
     }
 	/**
 	 * @param args the command line arguments
