@@ -1,5 +1,6 @@
 package br.com.fiap.starcrap.models;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
@@ -17,10 +18,9 @@ public class Equipe {
     @NotNull
     private String turma;
     @NotNull
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<Aluno> alunos;
-
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE)
     private List<Lancamento> lancamentos;
 
     public Equipe() {

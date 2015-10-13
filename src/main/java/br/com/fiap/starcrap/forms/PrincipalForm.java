@@ -61,7 +61,7 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lancamentoButton.setText("Lançamento");
+        lancamentoButton.setText("Lanï¿½amento");
         lancamentoButton.setEnabled(false);
         lancamentoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -270,9 +270,6 @@ public class PrincipalForm extends javax.swing.JFrame {
 
     private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
         manager.getTransaction().begin();
-        for (Aluno aluno : equipeSelecionada.getAlunos()) {
-            alunoDAO.delete(aluno);
-        }
         equipeDAO.delete(equipeSelecionada);
         manager.getTransaction().commit();
         populaGrupoList();
