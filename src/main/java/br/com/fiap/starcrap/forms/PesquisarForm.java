@@ -5,9 +5,6 @@
  */
 package br.com.fiap.starcrap.forms;
 
-import java.awt.event.ActionEvent;
-import javax.swing.JOptionPane;
-
 /**
  * @author go
  */
@@ -58,7 +55,7 @@ public class PesquisarForm extends javax.swing.JFrame {
             }
         });
 
-        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Distância até o alvo", "Ângulo do lançamento", "Velocidade do vento", "Peso do foguete", "Altitude máxima", "Velocidade máxima", "Tempo de propulsão", "Pico de Aceleração", "Aceleração media", "Tempo entre apogeu e descida", "Tempo de ejeção", "Altitude de ejeção", "Taxa de descida", "Duração do voo" }));
+        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Distï¿½ncia atï¿½ o alvo", "ï¿½ngulo do lanï¿½amento", "Velocidade do vento", "Peso do foguete", "Altitude mï¿½xima", "Velocidade mï¿½xima", "Tempo de propulsï¿½o", "Pico de Aceleraï¿½ï¿½o", "Aceleraï¿½ï¿½o media", "Tempo entre apogeu e descida", "Tempo de ejeï¿½ï¿½o", "Altitude de ejeï¿½ï¿½o", "Taxa de descida", "Duraï¿½ï¿½o do voo" }));
         opcaoPesquisaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcaoPesquisaCBActionPerformed(evt);

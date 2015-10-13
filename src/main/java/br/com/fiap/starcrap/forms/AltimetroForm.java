@@ -9,12 +9,11 @@ import br.com.fiap.starcrap.daos.FogueteDAO;
 import br.com.fiap.starcrap.daos.LancamentoDAO;
 import br.com.fiap.starcrap.models.Foguete;
 import br.com.fiap.starcrap.models.Lancamento;
-import java.math.BigDecimal;
-import java.time.Duration;
-import java.time.temporal.TemporalUnit;
-import java.util.concurrent.TimeUnit;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
+import java.math.BigDecimal;
+import java.time.Duration;
 
 /**
  *
@@ -74,23 +73,23 @@ public class AltimetroForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jLabel1.setText("Altitude Máxima");
+        jLabel1.setText("Altitude Mï¿½xima");
 
-        jLabel2.setText("Velocidade Máxima");
+        jLabel2.setText("Velocidade Mï¿½xima");
 
-        jLabel3.setText("Tempo de Propulsão");
+        jLabel3.setText("Tempo de Propulsï¿½o");
 
-        jLabel4.setText("Pico de Aceleração");
+        jLabel4.setText("Pico de Aceleraï¿½ï¿½o");
 
-        jLabel5.setText("Altitude de Ejeção");
+        jLabel5.setText("Altitude de Ejeï¿½ï¿½o");
 
-        jLabel6.setText("Aceleração Media");
+        jLabel6.setText("Aceleraï¿½ï¿½o Media");
 
         jLabel7.setText("Tempo entre Apogeu");
 
-        jLabel8.setText("Tempo de Ejeção");
+        jLabel8.setText("Tempo de Ejeï¿½ï¿½o");
 
-        jLabel9.setText("Duração do Voo");
+        jLabel9.setText("Duraï¿½ï¿½o do Voo");
 
         jLabel10.setText("Taxa de Descida");
 

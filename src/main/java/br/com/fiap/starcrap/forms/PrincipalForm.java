@@ -9,12 +9,12 @@ import br.com.fiap.starcrap.daos.AlunoDAO;
 import br.com.fiap.starcrap.daos.EquipeDAO;
 import br.com.fiap.starcrap.models.Aluno;
 import br.com.fiap.starcrap.models.Equipe;
-import java.util.ArrayList;
-import java.util.List;
+
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
-import javax.swing.DefaultListModel;
-import javax.swing.JOptionPane;
+import javax.swing.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
