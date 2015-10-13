@@ -5,26 +5,16 @@
              version="2.1">
 
     <persistence-unit name="default">
-
         <properties>
-            <!-- dados da conexao -->
-            <property name="javax.persistence.jdbc.driver"
-                      value="com.mysql.jdbc.Driver" />
-            <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://starcrap.cr1qi7gnhkaj.us-west-2.rds.amazonaws.com:3306/starcrap" />
-            <property name="javax.persistence.jdbc.user"
-                      value="starcrap" />
-            <property name="javax.persistence.jdbc.password"
-                      value="starcrap" />
+            <property name="dialect" value="org.hibernate.dialect.Oracle11gDialect"/>
+            <property name="connection.driver_class" value="oracle.jdbc.driver.OracleDriver"/>
+            <property name="hibernate.connection.username" value="OPS$RM74865"/>
+            <property name="hibernate.connection.password" value="260294"/>
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:/:@oracle.fiap.com.br:1521:ORCL"/>
+            <property name="hibernate.hbm2ddl.auto" value="update"/>
 
-            <!--  propriedades do hibernate -->
-            <property name="hibernate.dialect"
-                      value="org.hibernate.dialect.MySQL5InnoDBDialect" />
-            <property name="hibernate.show_sql" value="true" />
-            <property name="hibernate.format_sql" value="true" />
-
-            <!--  atualiza o banco, gera as tabelas se for preciso -->
-            <property name="hibernate.hbm2ddl.auto" value="update" />
+            <property name="hibernate.show_sql" value="true"/>
+            <property name="hibernate.format_sql" value="true"/>
 
         </properties>
     </persistence-unit>

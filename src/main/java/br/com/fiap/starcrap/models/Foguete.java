@@ -13,7 +13,7 @@ import java.math.BigDecimal;
 @Entity
 public class Foguete {
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.SEQUENCE)
 	private Long id;
 	private BigDecimal distanciaDoAlvo;
 	@NotNull
