@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Locale;
 
 /**
  *
@@ -48,7 +49,7 @@ public class LancamentoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
         try {
-            data = new javax.swing.JFormattedTextField(new MaskFormatter("##/##/####"));
+            data = new javax.swing.JFormattedTextField(new MaskFormatter("##-##-####"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -187,7 +188,11 @@ public class LancamentoForm extends javax.swing.JFrame {
         br.com.fiap.starcrap.models.Lancamento lancamento = new br.com.fiap.starcrap.models.Lancamento();
         Foguete foguete = new Foguete();
         String dataVal = data.getText();
-        LocalDateTime dataFormatada = LocalDateTime.parse(dataVal, DateTimeFormatter.ofPattern("dd/MM/yyyy"));
+        String[] split = dataVal.split("-");
+        int year = Integer.valueOf(split[2]);
+        int month = Integer.valueOf(split[1]);
+        int day = Integer.valueOf(split[0]);
+        LocalDateTime dataFormatada = LocalDateTime.of(year, month, day, 0, 0 ,0);
         lancamento.setDataDoLancamento(dataFormatada);
         String dist = distanciaAlvo.getText();
         foguete.setDistanciaDoAlvo(new BigDecimal(dist));
