@@ -6,7 +6,10 @@
 package br.com.fiap.starcrap.forms;
 
 import br.com.fiap.starcrap.models.Foguete;
+
+import javax.swing.text.MaskFormatter;
 import java.math.BigDecimal;
+import java.text.ParseException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
@@ -44,7 +47,11 @@ public class LancamentoForm extends javax.swing.JFrame {
         anguloLancamento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
-        data = new javax.swing.JFormattedTextField();
+        try {
+            data = new javax.swing.JFormattedTextField(new MaskFormatter("##/##/####"));
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
         jLabel5 = new javax.swing.JLabel();
         btnFoguete = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
@@ -55,9 +62,9 @@ public class LancamentoForm extends javax.swing.JFrame {
 
         jLabel1.setText("Data");
 
-        jLabel2.setText("Distância do Alvo");
+        jLabel2.setText("Distï¿½ncia do Alvo");
 
-        jLabel3.setText("Ângulo do Lançamento");
+        jLabel3.setText("ï¿½ngulo do Lanï¿½amento");
 
         jLabel4.setText("Peso do Foguete");
 
@@ -117,9 +124,9 @@ public class LancamentoForm extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Lançamento");
+        jLabel5.setText("Lanï¿½amento");
 
-        btnFoguete.setText("Próximo");
+        btnFoguete.setText("Prï¿½ximo");
         btnFoguete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFogueteActionPerformed(evt);
