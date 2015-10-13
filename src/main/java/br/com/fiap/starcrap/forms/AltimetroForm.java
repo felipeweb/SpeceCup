@@ -5,8 +5,14 @@
  */
 package br.com.fiap.starcrap.forms;
 
+import br.com.fiap.starcrap.daos.FogueteDAO;
+import br.com.fiap.starcrap.daos.LancamentoDAO;
 import br.com.fiap.starcrap.models.Foguete;
 import br.com.fiap.starcrap.models.Lancamento;
+import java.math.BigDecimal;
+import java.time.Duration;
+import java.time.temporal.TemporalUnit;
+import java.util.concurrent.TimeUnit;
 import javax.persistence.EntityManager;
 import javax.persistence.Persistence;
 
@@ -14,19 +20,23 @@ import javax.persistence.Persistence;
  *
  * @author go
  */
-public class Altimetro extends javax.swing.JFrame {
+public class AltimetroForm extends javax.swing.JFrame {
 
     private Foguete foguete;
     private Lancamento lancamento;
     private EntityManager manager;
+    private LancamentoDAO lancamentoDAO;
+    private FogueteDAO fogueteDAO;
 
     /**
      * Creates new form f
      */
-    public Altimetro(Lancamento lancamento, Foguete foguete) {
+    public AltimetroForm(Lancamento lancamento, Foguete foguete) {
         this.manager = Persistence.createEntityManagerFactory("default").createEntityManager();
         this.foguete = foguete;
         this.lancamento = lancamento;
+        this.lancamentoDAO = new LancamentoDAO(manager);
+        this.fogueteDAO = new FogueteDAO(manager);
         initComponents();
     }
 
@@ -85,8 +95,18 @@ public class Altimetro extends javax.swing.JFrame {
         jLabel10.setText("Taxa de Descida");
 
         salvar.setText("Salvar");
+        salvar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                salvarActionPerformed(evt);
+            }
+        });
 
         voltar.setText("Voltar");
+        voltar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                voltarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -193,6 +213,47 @@ public class Altimetro extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
+        LancamentoForm lancamento = new LancamentoForm();
+        lancamento.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_voltarActionPerformed
+
+    private void salvarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_salvarActionPerformed
+        manager.getTransaction().begin();
+        String altitude = altitudeMax.getText();
+        lancamento.setAltitudeMaxima(new BigDecimal(altitude));
+        String velocmax = velocidadeMax.getText();
+        lancamento.setVelocidadeMaxima(new BigDecimal(velocmax));
+        long tempoprop = Long.valueOf(tempoPropulsao.getText());
+        lancamento.setTempoDePropulsao(Duration.ofSeconds(tempoprop));
+        String picoacel = picoAceleracao.getText();
+        lancamento.setPicoDeAceleracao(new BigDecimal(picoacel));
+        String acelmedia = aceleracaoMedia.getText();
+        lancamento.setAceleracaoMedia(new BigDecimal(acelmedia));
+        long tempoapogeu = Long.valueOf(entreApogeu.getText());
+        lancamento.setTempoEntreApogeu(Duration.ofSeconds(tempoapogeu));
+        long tempoejecao = Long.valueOf(tempoEjecao.getText());
+        lancamento.setTempoDeEjecao(Duration.ofSeconds(tempoejecao));
+        String altitudeejecao = altitudeEjecao.getText();
+        lancamento.setAltitudeDeEjecao(new BigDecimal(altitudeejecao));
+        String taxadesc = taxaDescida.getText();
+        lancamento.setTaxaDeDescida(new BigDecimal(taxadesc));
+        long duracaovoo = Long.valueOf(duracaoVoo.getText());
+        lancamento.setDuracaoDoVoo(Duration.ofSeconds(duracaovoo));
+        lancamento.setFoguete(foguete);
+        fogueteDAO.insert(foguete);
+        lancamentoDAO.insert(lancamento);
+        manager.getTransaction().commit();
+        fechaTransacao();
+    }//GEN-LAST:event_salvarActionPerformed
+
+    private void fechaTransacao() {
+        if (manager.getTransaction().isActive()) {
+            manager.getTransaction().commit();
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField aceleracaoMedia;
     private javax.swing.JTextField altitudeEjecao;

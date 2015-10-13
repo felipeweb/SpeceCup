@@ -20,14 +20,14 @@ import javax.swing.JOptionPane;
  *
  * @author go
  */
-public class Principal extends javax.swing.JFrame {
+public class PrincipalForm extends javax.swing.JFrame {
 
     private EntityManager manager;
     private EquipeDAO equipeDAO;
     private AlunoDAO alunoDAO;
     private Equipe equipeSelecionada;
 
-    public Principal() {
+    public PrincipalForm() {
         this.manager = Persistence.createEntityManagerFactory("default").createEntityManager();
         this.alunoDAO = new AlunoDAO(manager);
         this.equipeDAO = new EquipeDAO(manager);
@@ -61,7 +61,7 @@ public class Principal extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lancamentoButton.setText("LanÃ§amento");
+        lancamentoButton.setText("Lançamento");
         lancamentoButton.setEnabled(false);
         lancamentoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,9 +178,9 @@ public class Principal extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lancamentoButton)
-                    .addComponent(buttonPesquisar, javax.swing.GroupLayout.PREFERRED_SIZE, 88, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(lancamentoButton, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(buttonPesquisar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -242,13 +242,13 @@ public class Principal extends javax.swing.JFrame {
 
                                 alunos.add(aluno);
                             }
-
-                            equipe.setAlunos(alunos);
-                            equipeDAO.insert(equipe);
-                            manager.getTransaction().commit();
-                            populaGrupoList();
                         }
                     }
+
+                    equipe.setAlunos(alunos);
+                    equipeDAO.insert(equipe);
+                    manager.getTransaction().commit();
+                    populaGrupoList();
                 }
             }
         }
@@ -281,13 +281,13 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void lancamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancamentoButtonActionPerformed
-        Lancamento lancamento = new Lancamento();
+        LancamentoForm lancamento = new LancamentoForm();
         lancamento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lancamentoButtonActionPerformed
 
     private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
-        Pesquisar pesquisar = new Pesquisar();
+        PesquisarForm pesquisar = new PesquisarForm();
         pesquisar.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonPesquisarActionPerformed
@@ -319,9 +319,9 @@ public class Principal extends javax.swing.JFrame {
         listModel.clear();
         componentesList.setModel(listModel);
     }
-    
+
     private void fechaTransacao() {
-        if(manager.getTransaction().isActive()) {
+        if (manager.getTransaction().isActive()) {
             manager.getTransaction().commit();
         }
     }

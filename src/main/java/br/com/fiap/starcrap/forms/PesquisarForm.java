@@ -11,12 +11,12 @@ import javax.swing.JOptionPane;
 /**
  * @author go
  */
-public class Pesquisar extends javax.swing.JFrame {
+public class PesquisarForm extends javax.swing.JFrame {
 
     /**
      * Creates new form Pesquisar
      */
-    public Pesquisar() {
+    public PesquisarForm() {
         initComponents();
     }
 
@@ -58,7 +58,7 @@ public class Pesquisar extends javax.swing.JFrame {
             }
         });
 
-        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dist√¢ncia at√© o alvo", "√Çngulo do lan√ßamento", "Velocidade do vento", "Peso do foguete", "Altitude m√°xima", "Velocidade m√°xima", "Tempo de propuls√£o", "Pico de Acelera√ß√£o", "Acelera√ß√£o media", "Tempo entre apogeu e descida", "Tempo de eje√ß√£o", "Altitude de eje√ß√£o", "Taxa de descida", "Dura√ß√£o do voo" }));
+        opcaoPesquisaCB.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Dist‚ncia atÈ o alvo", "¬ngulo do lanÁamento", "Velocidade do vento", "Peso do foguete", "Altitude m·xima", "Velocidade m·xima", "Tempo de propuls„o", "Pico de AceleraÁ„o", "AceleraÁ„o media", "Tempo entre apogeu e descida", "Tempo de ejeÁ„o", "Altitude de ejeÁ„o", "Taxa de descida", "DuraÁ„o do voo" }));
         opcaoPesquisaCB.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 opcaoPesquisaCBActionPerformed(evt);
@@ -133,7 +133,7 @@ public class Pesquisar extends javax.swing.JFrame {
     }//GEN-LAST:event_buttonPesquisarActionPerformed
 
     private void buttonVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonVoltarActionPerformed
-        Principal principal = new Principal();
+        PrincipalForm principal = new PrincipalForm();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_buttonVoltarActionPerformed

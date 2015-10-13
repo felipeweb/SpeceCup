@@ -6,7 +6,6 @@
 package br.com.fiap.starcrap.forms;
 
 import br.com.fiap.starcrap.models.Foguete;
-import java.awt.event.ActionEvent;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
@@ -15,12 +14,12 @@ import java.time.format.DateTimeFormatter;
  *
  * @author go
  */
-public class Lancamento extends javax.swing.JFrame {
-    
+public class LancamentoForm extends javax.swing.JFrame {
+
     /**
      * Creates new form Formulario2
      */
-    public Lancamento() {
+    public LancamentoForm() {
         initComponents();
     }
 
@@ -34,17 +33,18 @@ public class Lancamento extends javax.swing.JFrame {
     private void initComponents() {
 
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel1 = new javax.swing.JPanel();
         pesoFoguete = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        data = new javax.swing.JTextField();
         distanciaAlvo = new javax.swing.JTextField();
         anguloLancamento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
+        data = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         btnFoguete = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
@@ -55,9 +55,9 @@ public class Lancamento extends javax.swing.JFrame {
 
         jLabel1.setText("Data");
 
-        jLabel2.setText("Distï¿½ncia do Alvo");
+        jLabel2.setText("Distância do Alvo");
 
-        jLabel3.setText("ï¿½ngulo do Lanï¿½amento");
+        jLabel3.setText("Ângulo do Lançamento");
 
         jLabel4.setText("Peso do Foguete");
 
@@ -69,25 +69,25 @@ public class Lancamento extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jLabel6))
                         .addGap(24, 24, 24)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(pesoFoguete, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
+                            .addComponent(pesoFoguete, javax.swing.GroupLayout.DEFAULT_SIZE, 109, Short.MAX_VALUE)
                             .addComponent(velocidadeVento)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
                             .addComponent(jLabel2)
-                            .addComponent(jLabel3))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(anguloLancamento, javax.swing.GroupLayout.DEFAULT_SIZE, 79, Short.MAX_VALUE)
-                            .addComponent(data)
-                            .addComponent(distanciaAlvo))))
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel1))
+                        .addGap(12, 12, 12)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(distanciaAlvo)
+                            .addComponent(anguloLancamento)
+                            .addComponent(data))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,9 +117,9 @@ public class Lancamento extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Lanï¿½amento");
+        jLabel5.setText("Lançamento");
 
-        btnFoguete.setText("Prï¿½ximo");
+        btnFoguete.setText("Próximo");
         btnFoguete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFogueteActionPerformed(evt);
@@ -144,14 +144,14 @@ public class Lancamento extends javax.swing.JFrame {
                         .addComponent(jLabel5)
                         .addGap(36, 36, 36))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 6, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(18, 18, 18)
                                 .addComponent(btnFoguete, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(11, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -171,7 +171,7 @@ public class Lancamento extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVoltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVoltarActionPerformed
-        Principal principal = new Principal();
+        PrincipalForm principal = new PrincipalForm();
         principal.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnVoltarActionPerformed
@@ -190,13 +190,12 @@ public class Lancamento extends javax.swing.JFrame {
         foguete.setPesoDoFoguete(new BigDecimal(peso));
         String velocidadeDoVento = velocidadeVento.getText();
         lancamento.setVelocidadeDoVento(new BigDecimal(velocidadeDoVento));
-        
-        Altimetro altimetro = new Altimetro(lancamento, foguete);
+
+        AltimetroForm altimetro = new AltimetroForm(lancamento, foguete);
         altimetro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnFogueteActionPerformed
 
-    
     /**
      * @param args the command line arguments
      */
@@ -206,7 +205,7 @@ public class Lancamento extends javax.swing.JFrame {
     private javax.swing.JButton btnFoguete;
     private javax.swing.JButton btnVoltar;
     private javax.swing.ButtonGroup buttonGroup1;
-    private javax.swing.JTextField data;
+    private javax.swing.JFormattedTextField data;
     private javax.swing.JTextField distanciaAlvo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -215,6 +214,7 @@ public class Lancamento extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JTextField pesoFoguete;
     private javax.swing.JTextField velocidadeVento;
     // End of variables declaration//GEN-END:variables
