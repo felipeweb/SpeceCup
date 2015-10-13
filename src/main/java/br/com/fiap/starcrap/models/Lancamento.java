@@ -43,7 +43,7 @@ public class Lancamento {
 					  Duration tempoDePropulsao,
 					  BigDecimal picoDeAceleracao,
 					  BigDecimal aceleracaoMedia,
-					  Duration tempoEntreApogeuEDescida,
+					  Duration tempoEntreApogeu,
 					  Duration tempoDeEjecao,
 					  BigDecimal altitudeDeEjecao,
 					  BigDecimal taxaDeDescida,
