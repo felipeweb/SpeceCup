@@ -47,7 +47,7 @@ public class LancamentoForm extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
         try {
-            data = new javax.swing.JFormattedTextField(new MaskFormatter("##-##-####"));
+            data = new javax.swing.JFormattedTextField(new MaskFormatter("##/##/####"));
         } catch (ParseException e) {
             e.printStackTrace();
         }
@@ -186,7 +186,7 @@ public class LancamentoForm extends javax.swing.JFrame {
         br.com.fiap.starcrap.models.Lancamento lancamento = new br.com.fiap.starcrap.models.Lancamento();
         Foguete foguete = new Foguete();
         String dataVal = data.getText();
-        String[] split = dataVal.split("-");
+        String[] split = dataVal.split("/");
         int year = Integer.valueOf(split[2]);
         int month = Integer.valueOf(split[1]);
         int day = Integer.valueOf(split[0]);
