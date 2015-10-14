@@ -12,7 +12,7 @@ import java.time.LocalDateTime;
 @Entity
 public class Lancamento {
 	@Id
-	@GeneratedValue(strategy = GenerationType.SEQUENCE)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@NotNull
 	private LocalDateTime dataDoLancamento;
