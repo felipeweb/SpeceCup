@@ -1,7 +1,8 @@
 package br.com.fiap.starcrap.daos;
 
 import br.com.fiap.starcrap.models.Equipe;
-
+import java.math.BigDecimal;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
@@ -22,14 +23,21 @@ public class EquipeDAO extends GenericDAO<Equipe> {
 		return manager;
 	}
 
-    public Equipe findByTeamName(String nomeEquipe) {
-        try { 
-            return getEntityManager()
-                .createQuery("select e from Equipe e where e.nome = :nome", Equipe.class)
-                .setParameter("nome", nomeEquipe)
-                .getSingleResult();
-        } catch(NoResultException e) {
-            return null;
-        }
-    }
+	public Equipe findByTeamName(String nomeEquipe) {
+		try {
+			return getEntityManager()
+					.createQuery("select e from Equipe e where e.nome = :nome", Equipe.class)
+					.setParameter("nome", nomeEquipe)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
+	public List<Equipe> procuraPorDistanciaDoAlvo(String sinal,String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.foguete.distanciaDoAlvo"  + sinal + ":valor", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
 }

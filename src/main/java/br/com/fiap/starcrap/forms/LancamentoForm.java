@@ -5,6 +5,7 @@
  */
 package br.com.fiap.starcrap.forms;
 
+import br.com.fiap.starcrap.models.Equipe;
 import br.com.fiap.starcrap.models.Foguete;
 
 import javax.swing.text.MaskFormatter;
@@ -18,11 +19,14 @@ import java.time.LocalDateTime;
  */
 public class LancamentoForm extends javax.swing.JFrame {
 
+    private Equipe equipe;
+
     /**
      * Creates new form Formulario2
      */
-    public LancamentoForm() {
+    public LancamentoForm(Equipe equipe) {
         initComponents();
+        this.equipe = equipe;
     }
 
     /**
@@ -201,7 +205,7 @@ public class LancamentoForm extends javax.swing.JFrame {
         String velocidadeDoVento = velocidadeVento.getText();
         lancamento.setVelocidadeDoVento(new BigDecimal(velocidadeDoVento));
 
-        AltimetroForm altimetro = new AltimetroForm(lancamento, foguete);
+        AltimetroForm altimetro = new AltimetroForm(equipe,lancamento, foguete);
         altimetro.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_btnFogueteActionPerformed

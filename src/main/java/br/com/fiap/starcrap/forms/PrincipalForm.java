@@ -278,7 +278,7 @@ public class PrincipalForm extends javax.swing.JFrame {
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void lancamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancamentoButtonActionPerformed
-        LancamentoForm lancamento = new LancamentoForm();
+        LancamentoForm lancamento = new LancamentoForm(equipeSelecionada);
         lancamento.setVisible(true);
         this.dispose();
     }//GEN-LAST:event_lancamentoButtonActionPerformed
