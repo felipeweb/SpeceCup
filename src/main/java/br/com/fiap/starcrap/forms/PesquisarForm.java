@@ -186,7 +186,6 @@ public class PesquisarForm extends javax.swing.JFrame {
 	private void buttonPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_buttonPesquisarActionPerformed
 		manager.getTransaction().begin();
 		List<Equipe> equipes = pesquisaAvancada();
-		System.out.println(equipes.size());
 		if (equipes != null) {
 			String[][] matriz = geraMatriz(equipes);
 			tableModel = new DefaultTableModel(matriz, tableTitles);
@@ -210,14 +209,14 @@ public class PesquisarForm extends javax.swing.JFrame {
 			matriz[i][5] = equipe.getLancamentos().get(0).getFoguete().getPesoDoFoguete().toString();
 			matriz[i][6] = equipe.getLancamentos().get(0).getAltitudeMaxima().toString();
 			matriz[i][7] = equipe.getLancamentos().get(0).getVelocidadeMaxima().toString();
-			matriz[i][8] = equipe.getLancamentos().get(0).getTempoDePropulsao().toString();
+			matriz[i][8] = String.valueOf(equipe.getLancamentos().get(0).getTempoDePropulsao().getSeconds());
 			matriz[i][9] = equipe.getLancamentos().get(0).getPicoDeAceleracao().toString();
 			matriz[i][10] = equipe.getLancamentos().get(0).getAceleracaoMedia().toString();
-			matriz[i][11] = equipe.getLancamentos().get(0).getTempoEntreApogeuEDescida().toString();
-			matriz[i][12] = equipe.getLancamentos().get(0).getTempoDeEjecao().toString();
+			matriz[i][11] = String.valueOf(equipe.getLancamentos().get(0).getTempoEntreApogeuEDescida().getSeconds());
+			matriz[i][12] = String.valueOf(equipe.getLancamentos().get(0).getTempoDeEjecao().getSeconds());
 			matriz[i][13] = equipe.getLancamentos().get(0).getAltitudeDeEjecao().toString();
 			matriz[i][14] = equipe.getLancamentos().get(0).getTaxaDeDescida().toString();
-			matriz[i][15] = equipe.getLancamentos().get(0).getDuracaoDoVoo().toString();
+			matriz[i][15] = String.valueOf(equipe.getLancamentos().get(0).getDuracaoDoVoo().getSeconds());
 
 		}
 		return matriz;
@@ -269,7 +268,6 @@ public class PesquisarForm extends javax.swing.JFrame {
 			default:
 				sinal = null;
 		}
-
 		if (a.equals("distancia ate o alvo")) {
 			equipes = equipeDAO.procuraPorDistanciaDoAlvo(sinal, valor);
 		} else if (a.equals("angulo do lancamento")) {
@@ -286,10 +284,19 @@ public class PesquisarForm extends javax.swing.JFrame {
 			equipes = equipeDAO.procuraPorTempoDePropulsao(sinal, valor);
 		} else if (a.equals("pico de aceleracao")) {
 			equipes = equipeDAO.procuraPorPicoDeAceleracao(sinal, valor);
-		} else if (a.equals("")) {
-
+		} else if (a.equals("aceleracao media")) {
+			equipes = equipeDAO.procuraPorAceleracaoMedia(sinal, valor);
+		} else if (a.equals("tempo entre apogeu e descida")) {
+			equipes = equipeDAO.procuraPorTempoEntreApogeu(sinal, valor);
+		} else if (a.equals("tempo de ejecao")) {
+			equipes = equipeDAO.procuraPorTempoDeEjecao(sinal, valor);
+		} else if (a.equals("altitude de ejecao")) {
+			equipes = equipeDAO.procuraPorAltitudeDeEjecao(sinal, valor);
+		} else if (a.equals("taxa de descida")) {
+			equipes = equipeDAO.procuraPorTaxaDeDescida(sinal, valor);
+		} else if (a.equals("duracao do voo")) {
+			equipes = equipeDAO.procuraPorDuracaoDoVoo(sinal, valor);
 		}
-
 		return equipes;
 	}
 

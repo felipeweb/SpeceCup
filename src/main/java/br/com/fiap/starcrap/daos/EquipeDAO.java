@@ -2,6 +2,7 @@ package br.com.fiap.starcrap.daos;
 
 import br.com.fiap.starcrap.models.Equipe;
 import java.math.BigDecimal;
+import java.time.Duration;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
@@ -80,14 +81,56 @@ public class EquipeDAO extends GenericDAO<Equipe> {
 	public List<Equipe> procuraPorTempoDePropulsao(String sinal, String valor) {
 		return getEntityManager()
 				.createQuery("select e from Equipe e join e.lancamentos l where l.tempoDePropulsao" + sinal + ":valor order by l.tempoDePropulsao", Equipe.class)
-				.setParameter("valor", valor)
+				.setParameter("valor", Duration.ofSeconds(Long.valueOf(valor)))
 				.getResultList();
 	}
 
 	public List<Equipe> procuraPorPicoDeAceleracao(String sinal, String valor) {
 		return getEntityManager()
 				.createQuery("select e from Equipe e join e.lancamentos l where l.picoDeAceleracao" + sinal + ":valor order by l.picoDeAceleracao", Equipe.class)
-				.setParameter("valor", valor)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorAceleracaoMedia(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.aceleracaoMedia" + sinal + ":valor order by l.aceleracaoMedia", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorTempoEntreApogeu(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.tempoEntreApogeu" + sinal + ":valor order by l.tempoEntreApogeu", Equipe.class)
+				.setParameter("valor", Duration.ofSeconds(Long.valueOf(valor)))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorTempoDeEjecao(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.tempoDeEjecao" + sinal + ":valor order by l.tempoDeEjecao", Equipe.class)
+				.setParameter("valor", Duration.ofSeconds(Long.valueOf(valor)))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorAltitudeDeEjecao(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.altitudeDeEjecao" + sinal + ":valor order by l.altitudeDeEjecao", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorTaxaDeDescida(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.taxaDeDescida" + sinal + ":valor order by l.taxaDeDescida", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorDuracaoDoVoo(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.duracaoDoVoo" + sinal + ":valor order by l.duracaoDoVoo", Equipe.class)
+				.setParameter("valor", Duration.ofSeconds(Long.valueOf(valor)))
 				.getResultList();
 	}
 }
