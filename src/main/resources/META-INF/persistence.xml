@@ -11,7 +11,7 @@
             <property name="javax.persistence.jdbc.driver"
                       value="com.mysql.jdbc.Driver" />
             <property name="javax.persistence.jdbc.url"
-                      value="jdbc:mysql://localhost:3306/starcrap" />
+                      value="jdbc:mysql://201.92.139.131:3306/starcrap" />
             <property name="javax.persistence.jdbc.user"
                       value="root" />
             <property name="javax.persistence.jdbc.password"
