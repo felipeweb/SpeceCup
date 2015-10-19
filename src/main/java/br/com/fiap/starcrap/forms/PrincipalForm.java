@@ -61,7 +61,7 @@ public class PrincipalForm extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        lancamentoButton.setText("Lan�amento");
+        lancamentoButton.setText("Lançamento");
         lancamentoButton.setEnabled(false);
         lancamentoButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {

@@ -111,20 +111,20 @@
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
           <StringArray count="14">
-            <StringItem index="0" value="Dist&#xe2;ncia at&#xe9; o alvo"/>
-            <StringItem index="1" value="&#xc2;ngulo do lan&#xe7;amento"/>
+            <StringItem index="0" value="Distância até; o alvo"/>
+            <StringItem index="1" value="Ângulo do lançamento"/>
             <StringItem index="2" value="Velocidade do vento"/>
             <StringItem index="3" value="Peso do foguete"/>
-            <StringItem index="4" value="Altitude m&#xe1;xima"/>
-            <StringItem index="5" value="Velocidade m&#xe1;xima"/>
-            <StringItem index="6" value="Tempo de propuls&#xe3;o"/>
-            <StringItem index="7" value="Pico de Acelera&#xe7;&#xe3;o"/>
-            <StringItem index="8" value="Acelera&#xe7;&#xe3;o media"/>
+            <StringItem index="4" value="Altitude máxima"/>
+            <StringItem index="5" value="Velocidade máxima"/>
+            <StringItem index="6" value="Tempo de propulsão"/>
+            <StringItem index="7" value="Pico de Aceleração"/>
+            <StringItem index="8" value="Aceleração média"/>
             <StringItem index="9" value="Tempo entre apogeu e descida"/>
-            <StringItem index="10" value="Tempo de eje&#xe7;&#xe3;o"/>
-            <StringItem index="11" value="Altitude de eje&#xe7;&#xe3;o"/>
+            <StringItem index="10" value="Tempo de ejeção"/>
+            <StringItem index="11" value="Altitude de ejeção"/>
             <StringItem index="12" value="Taxa de descida"/>
-            <StringItem index="13" value="Dura&#xe7;&#xe3;o do voo"/>
+            <StringItem index="13" value="Duração do voo"/>
           </StringArray>
         </Property>
       </Properties>

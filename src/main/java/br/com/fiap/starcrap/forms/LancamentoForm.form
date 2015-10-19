@@ -159,12 +159,12 @@
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
-            <Property name="text" type="java.lang.String" value="Dist&#xe2;ncia do Alvo"/>
+            <Property name="text" type="java.lang.String" value="Distância do Alvo"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
-            <Property name="text" type="java.lang.String" value="&#xc2;ngulo do Lan&#xe7;amento"/>
+            <Property name="text" type="java.lang.String" value="Ângulo do Lançamento"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel4">
@@ -189,12 +189,12 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Lan&#xe7;amento"/>
+        <Property name="text" type="java.lang.String" value="Lançamento"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JButton" name="btnFoguete">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pr&#xf3;ximo"/>
+        <Property name="text" type="java.lang.String" value="Próximo"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btnFogueteActionPerformed"/>

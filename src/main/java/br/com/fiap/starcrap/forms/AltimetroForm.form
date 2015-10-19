@@ -151,28 +151,28 @@
   <SubComponents>
     <Component class="javax.swing.JLabel" name="jLabel1">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Altitude M&#xe1;xima"/>
+        <Property name="text" type="java.lang.String" value="Altitude Máxima"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="altitudeMax">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Velocidade M&#xe1;xima"/>
+        <Property name="text" type="java.lang.String" value="Velocidade Máxima"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="velocidadeMax">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel3">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tempo de Propuls&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Tempo de Propulsão"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="tempoPropulsao">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel4">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Pico de Acelera&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Pico de Aceleração"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="picoAceleracao">
@@ -181,14 +181,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel5">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Altitude de Eje&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Altitude de Ejeção"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="altitudeEjecao">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel6">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Acelera&#xe7;&#xe3;o Media"/>
+        <Property name="text" type="java.lang.String" value="Aceleração Media"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="aceleracaoMedia">
@@ -202,14 +202,14 @@
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel8">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Tempo de Eje&#xe7;&#xe3;o"/>
+        <Property name="text" type="java.lang.String" value="Tempo de Ejeção"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="taxaDescida">
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel9">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Dura&#xe7;&#xe3;o do Voo"/>
+        <Property name="text" type="java.lang.String" value="Duração do Voo"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JTextField" name="duracaoVoo">
