@@ -34,10 +34,60 @@ public class EquipeDAO extends GenericDAO<Equipe> {
 		}
 	}
 
-	public List<Equipe> procuraPorDistanciaDoAlvo(String sinal,String valor) {
+	public List<Equipe> procuraPorDistanciaDoAlvo(String sinal, String valor) {
 		return getEntityManager()
-				.createQuery("select e from Equipe e join e.lancamentos l where l.foguete.distanciaDoAlvo"  + sinal + ":valor", Equipe.class)
+				.createQuery("select e from Equipe e join e.lancamentos l where l.foguete.distanciaDoAlvo" + sinal + ":valor order by l.foguete.distanciaDoAlvo", Equipe.class)
 				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorAnguloDeLancamento(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.foguete.anguloDeLancamento" + sinal + ":valor order by l.foguete.anguloDeLancamento", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorVelocidadeDoVento(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where  l.velocidadeDoVento" + sinal + ":valor order by l.velocidadeDoVento", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+
+	public List<Equipe> procuraPorPesoDoFoguete(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.foguete.pesoDoFoguete" + sinal + ":valor order by l.foguete.pesoDoFoguete", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorAltitudeMaxima(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.altitudeMaxima" + sinal + ":valor order by l.altitudeMaxima", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorVelocidadeMaxima(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.velocidadeMaxima" + sinal + ":valor order by l.velocidadeMaxima", Equipe.class)
+				.setParameter("valor", new BigDecimal(valor))
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorTempoDePropulsao(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.tempoDePropulsao" + sinal + ":valor order by l.tempoDePropulsao", Equipe.class)
+				.setParameter("valor", valor)
+				.getResultList();
+	}
+
+	public List<Equipe> procuraPorPicoDeAceleracao(String sinal, String valor) {
+		return getEntityManager()
+				.createQuery("select e from Equipe e join e.lancamentos l where l.picoDeAceleracao" + sinal + ":valor order by l.picoDeAceleracao", Equipe.class)
+				.setParameter("valor", valor)
 				.getResultList();
 	}
 }

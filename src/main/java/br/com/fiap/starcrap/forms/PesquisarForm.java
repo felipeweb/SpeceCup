@@ -234,7 +234,7 @@ public class PesquisarForm extends javax.swing.JFrame {
 	}
 
 	private List<Equipe> pesquisaAvancada() {
-		String a = opcaoPesquisaCB.getSelectedItem().toString();
+		String a = opcaoPesquisaCB.getSelectedItem().toString().toLowerCase();
 		String sinal;
 		String valor = this.valor.getText();
 		List<Equipe> equipes = null;
@@ -270,8 +270,24 @@ public class PesquisarForm extends javax.swing.JFrame {
 				sinal = null;
 		}
 
-		if (a.toLowerCase().equals("distancia ate o alvo")) {
+		if (a.equals("distancia ate o alvo")) {
 			equipes = equipeDAO.procuraPorDistanciaDoAlvo(sinal, valor);
+		} else if (a.equals("angulo do lancamento")) {
+			equipes = equipeDAO.procuraPorAnguloDeLancamento(sinal, valor);
+		} else if (a.equals("velocidade do vento")) {
+			equipes = equipeDAO.procuraPorVelocidadeDoVento(sinal, valor);
+		} else if (a.equals("peso do foguete")) {
+			equipes = equipeDAO.procuraPorPesoDoFoguete(sinal, valor);
+		} else if (a.equals("altitude maxima")) {
+			equipes = equipeDAO.procuraPorAltitudeMaxima(sinal, valor);
+		} else if (a.equals("velecidade maxima")) {
+			equipes = equipeDAO.procuraPorVelocidadeMaxima(sinal, valor);
+		} else if (a.equals("tempo de propulsao")) {
+			equipes = equipeDAO.procuraPorTempoDePropulsao(sinal, valor);
+		} else if (a.equals("pico de aceleracao")) {
+			equipes = equipeDAO.procuraPorPicoDeAceleracao(sinal, valor);
+		} else if (a.equals("")) {
+
 		}
 
 		return equipes;

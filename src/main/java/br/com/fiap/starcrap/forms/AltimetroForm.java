@@ -219,7 +219,7 @@ public class AltimetroForm extends javax.swing.JFrame {
 	}// </editor-fold>//GEN-END:initComponents
 
 	private void voltarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_voltarActionPerformed
-		LancamentoForm lancamento = new LancamentoForm(null);
+		LancamentoForm lancamento = new LancamentoForm(equipe);
 		lancamento.setVisible(true);
 		this.dispose();
 	}//GEN-LAST:event_voltarActionPerformed
