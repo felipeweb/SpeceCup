@@ -91,6 +91,7 @@ public class PesquisarForm extends javax.swing.JFrame {
 
 		setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 		setTitle("StarCrap");
+		setResizable(false);
 
 		condicaoCB.setModel(new javax.swing.DefaultComboBoxModel(new String[]{"Maior que", "Menor que", "Igual a", "Maior ou igual a", "Menor ou igual a", "Diferente de"}));
 		condicaoCB.addActionListener(new java.awt.event.ActionListener() {
