@@ -11,7 +11,9 @@ import br.com.fiap.starcrap.models.Foguete;
 import javax.swing.text.MaskFormatter;
 import java.math.BigDecimal;
 import java.text.ParseException;
+import java.time.DateTimeException;
 import java.time.LocalDateTime;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -50,24 +52,21 @@ public class LancamentoForm extends javax.swing.JFrame {
         anguloLancamento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
-        try {
-            data = new javax.swing.JFormattedTextField(new MaskFormatter("##/##/####"));
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+        data = new javax.swing.JFormattedTextField();
         jLabel5 = new javax.swing.JLabel();
         btnFoguete = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("StarCrap");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         jLabel1.setText("Data");
 
-        jLabel2.setText("Dist�ncia do Alvo");
+        jLabel2.setText("Distância do Alvo");
 
-        jLabel3.setText("�ngulo do Lan�amento");
+        jLabel3.setText("Ângulo do Lançamento");
 
         jLabel4.setText("Peso do Foguete");
 
@@ -127,9 +126,9 @@ public class LancamentoForm extends javax.swing.JFrame {
                 .addContainerGap(29, Short.MAX_VALUE))
         );
 
-        jLabel5.setText("Lan�amento");
+        jLabel5.setText("Lançamento");
 
-        btnFoguete.setText("Pr�ximo");
+        btnFoguete.setText("Próximo");
         btnFoguete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnFogueteActionPerformed(evt);
@@ -148,19 +147,17 @@ public class LancamentoForm extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel5)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(102, 102, 102)
-                        .addComponent(jLabel5)
-                        .addGap(36, 36, 36))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnFoguete, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(btnVoltar, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnFoguete, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -170,11 +167,11 @@ public class LancamentoForm extends javax.swing.JFrame {
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnVoltar)
                     .addComponent(btnFoguete))
-                .addGap(23, 23, 23))
+                .addContainerGap(24, Short.MAX_VALUE))
         );
 
         pack();
@@ -187,27 +184,34 @@ public class LancamentoForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btnVoltarActionPerformed
 
     private void btnFogueteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFogueteActionPerformed
-        br.com.fiap.starcrap.models.Lancamento lancamento = new br.com.fiap.starcrap.models.Lancamento();
-        Foguete foguete = new Foguete();
-        String dataVal = data.getText();
-        String[] split = dataVal.split("/");
-        int year = Integer.valueOf(split[2]);
-        int month = Integer.valueOf(split[1]);
-        int day = Integer.valueOf(split[0]);
-        LocalDateTime dataFormatada = LocalDateTime.of(year, month, day, 0, 0 ,0);
-        lancamento.setDataDoLancamento(dataFormatada);
-        String dist = distanciaAlvo.getText();
-        foguete.setDistanciaDoAlvo(new BigDecimal(dist));
-        String angulo = anguloLancamento.getText();
-        foguete.setAnguloDeLancamento(new BigDecimal(angulo));
-        String peso = pesoFoguete.getText();
-        foguete.setPesoDoFoguete(new BigDecimal(peso));
-        String velocidadeDoVento = velocidadeVento.getText();
-        lancamento.setVelocidadeDoVento(new BigDecimal(velocidadeDoVento));
-
-        AltimetroForm altimetro = new AltimetroForm(equipe,lancamento, foguete);
-        altimetro.setVisible(true);
-        this.dispose();
+        try {
+            br.com.fiap.starcrap.models.Lancamento lancamento = new br.com.fiap.starcrap.models.Lancamento();
+            Foguete foguete = new Foguete();
+            String dataVal = data.getText();
+            String[] split = dataVal.split("/");
+            int year = Integer.valueOf(split[2]);
+            int month = Integer.valueOf(split[1]);
+            int day = Integer.valueOf(split[0]);
+            LocalDateTime dataFormatada = LocalDateTime.of(year, month, day, 0, 0, 0);
+            lancamento.setDataDoLancamento(dataFormatada);
+            String dist = distanciaAlvo.getText();
+            foguete.setDistanciaDoAlvo(new BigDecimal(dist));
+            String angulo = anguloLancamento.getText();
+            foguete.setAnguloDeLancamento(new BigDecimal(angulo));
+            String peso = pesoFoguete.getText();
+            foguete.setPesoDoFoguete(new BigDecimal(peso));
+            String velocidadeDoVento = velocidadeVento.getText();
+            lancamento.setVelocidadeDoVento(new BigDecimal(velocidadeDoVento));
+            
+            AltimetroForm altimetro = new AltimetroForm(equipe, lancamento, foguete);
+            altimetro.setVisible(true);
+            this.dispose();
+        } catch (DateTimeException e) {
+            JOptionPane.showMessageDialog(this, "Data inválida.", "Corrija!",JOptionPane.WARNING_MESSAGE);
+        }
+        catch (NumberFormatException e){
+            JOptionPane.showMessageDialog(this, "Digite apenas números, por favor.", "Verifique os valores!", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnFogueteActionPerformed
 
     /**
