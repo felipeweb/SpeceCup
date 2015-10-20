@@ -44,6 +44,7 @@ public class AltimetroForm extends javax.swing.JFrame {
         this.fogueteDAO = new FogueteDAO(manager);
         this.equipeDAO = new EquipeDAO(manager);
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

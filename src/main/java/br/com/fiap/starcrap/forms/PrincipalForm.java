@@ -35,6 +35,7 @@ public class PrincipalForm extends javax.swing.JFrame {
         this.equipeDAO = new EquipeDAO(manager);
         initComponents();
         populaGrupoList();
+        this.setLocationRelativeTo(null);
 
     }
 

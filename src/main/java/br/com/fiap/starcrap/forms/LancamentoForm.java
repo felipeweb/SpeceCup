@@ -29,6 +29,7 @@ public class LancamentoForm extends javax.swing.JFrame {
     public LancamentoForm(Equipe equipe) {
         initComponents();
         this.equipe = equipe;
+        this.setLocationRelativeTo(null);
     }
 
     /**

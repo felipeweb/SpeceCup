@@ -39,6 +39,7 @@ public class PesquisarForm extends javax.swing.JFrame {
         initComponents();
         this.manager = Persistence.createEntityManagerFactory("default").createEntityManager();
         this.equipeDAO = new EquipeDAO(manager);
+        this.setLocationRelativeTo(null);
     }
 
     /**
