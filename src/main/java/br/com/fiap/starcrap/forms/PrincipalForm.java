@@ -228,32 +228,32 @@ public class PrincipalForm extends javax.swing.JFrame {
         try {
             manager.getTransaction().begin();
 
-            String grupo = JOptionPane.showInputDialog(this, "Digite o nome do grupo:", "Cadastro de grupo",JOptionPane.PLAIN_MESSAGE);
+            String grupo = JOptionPane.showInputDialog(this, "Digite o nome do grupo:", "Cadastro de grupo", JOptionPane.PLAIN_MESSAGE);
             if (grupo != null) {
                 Equipe equipe = new Equipe();
                 equipe.setNome(grupo);
 
-                String turma = JOptionPane.showInputDialog(this, "Digite o nome da turma:", "Cadastro de grupo",JOptionPane.PLAIN_MESSAGE);
+                String turma = JOptionPane.showInputDialog(this, "Digite o nome da turma:", "Cadastro de grupo", JOptionPane.PLAIN_MESSAGE);
 
                 if (turma != null) {
                     equipe.setTurma(turma);
                     int nAlunos = 0;
                     try {
-                        nAlunos = Integer.parseInt(JOptionPane.showInputDialog(this,"Digite o número de alunos do grupo:", "Cadastro de grupo",JOptionPane.PLAIN_MESSAGE));
+                        nAlunos = Integer.parseInt(JOptionPane.showInputDialog(this, "Digite o número de alunos do grupo:", "Cadastro de grupo", JOptionPane.PLAIN_MESSAGE));
                     } catch (NumberFormatException e) {
-                        JOptionPane.showMessageDialog(this, "Digite somente números inteiros", "Atenção!",JOptionPane.WARNING_MESSAGE);
+                        JOptionPane.showMessageDialog(this, "Digite somente números inteiros", "Atenção!", JOptionPane.WARNING_MESSAGE);
                     }
                     if (nAlunos > 0) {
                         List<Aluno> alunos = new ArrayList<>();
 
                         for (int k = 0; k < nAlunos; k++) {
                             Aluno aluno = new Aluno();
-                            String alunome = JOptionPane.showInputDialog(this, "Digite o nome do " + (k + 1) + "º aluno:", "Cadastro de grupo",JOptionPane.PLAIN_MESSAGE);
+                            String alunome = JOptionPane.showInputDialog(this, "Digite o nome do " + (k + 1) + "º aluno:", "Cadastro de grupo", JOptionPane.PLAIN_MESSAGE);
                             if (alunome == null) {
                                 break;
                             } else {
 
-                                String rm = JOptionPane.showInputDialog(this, "Digite o rm do aluno:", "Cadastro de grupo",JOptionPane.PLAIN_MESSAGE);
+                                String rm = JOptionPane.showInputDialog(this, "Digite o rm do aluno:", "Cadastro de grupo", JOptionPane.PLAIN_MESSAGE);
                                 if (rm == null) {
                                     break;
                                 } else {
@@ -276,7 +276,7 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
             fechaTransacao();
         } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(this, "Não foi possível inserir os dados no banco, verifique os valores inseridos (violação de constraint).", "Violação!",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Não foi possível inserir os dados no banco, verifique os valores inseridos (violação de constraint).", "Violação!", JOptionPane.ERROR_MESSAGE);
             fechaTransacao();
         }
     }//GEN-LAST:event_grupoButtonActionPerformed
@@ -293,22 +293,25 @@ public class PrincipalForm extends javax.swing.JFrame {
             }
         } else {
             numComponentes.setText("");
+            lancamentoButton.setEnabled(false);
+            consultarButton.setEnabled(false);
+            removerButton.setEnabled(false);
         }
     }//GEN-LAST:event_grupoListValueChanged
 
     private void removerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_removerButtonActionPerformed
-        if(JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja remover o grupo "+equipeSelecionada.getNome()+"?","Remoção de Grupo",JOptionPane.YES_NO_OPTION)==JOptionPane.YES_OPTION){
-        try {
-            manager.getTransaction().begin();
-            equipeDAO.delete(equipeSelecionada);
-            manager.getTransaction().commit();
-            populaGrupoList();
-            limpaComponentesList();
-            fechaTransacao();
-        } catch (ConstraintViolationException e) {
-            JOptionPane.showMessageDialog(this, "Não foi possível inserir os dados no banco de dados, verifique os valores inseridos (violação de constraint).","Violação!",JOptionPane.ERROR_MESSAGE);
+        if (JOptionPane.showConfirmDialog(this, "Tem certeza de que deseja remover o grupo " + equipeSelecionada.getNome() + "?", "Remoção de Grupo", JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            try {
+                manager.getTransaction().begin();
+                equipeDAO.delete(equipeSelecionada);
+                manager.getTransaction().commit();
+                populaGrupoList();
+                limpaComponentesList();
+                fechaTransacao();
+            } catch (ConstraintViolationException e) {
+                JOptionPane.showMessageDialog(this, "Não foi possível inserir os dados no banco de dados, verifique os valores inseridos (violação de constraint).", "Violação!", JOptionPane.ERROR_MESSAGE);
+            }
         }
-      }
     }//GEN-LAST:event_removerButtonActionPerformed
 
     private void lancamentoButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lancamentoButtonActionPerformed
@@ -325,7 +328,7 @@ public class PrincipalForm extends javax.swing.JFrame {
 
     private void consultarButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_consultarButtonActionPerformed
         if (equipeSelecionada.getLancamentos() == null || equipeSelecionada.getLancamentos().isEmpty()) {
-            JOptionPane.showMessageDialog(this, "Não há lançamentos para a equipe " + equipeSelecionada.getNome(),"Ops!",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(this, "Não há lançamentos para a equipe " + equipeSelecionada.getNome(), "Ops!", JOptionPane.INFORMATION_MESSAGE);
             return;
         }
         Lancamento lanca = equipeSelecionada.getLancamentos().get(0);
@@ -351,7 +354,7 @@ public class PrincipalForm extends javax.swing.JFrame {
                 + "\nÂngulo de Lançamento: " + lanca.getFoguete().getAnguloDeLancamento()
                 + "\nPeso do Foguete: " + lanca.getFoguete().getPesoDoFoguete();
 
-        JOptionPane.showMessageDialog(this, str,"Dados de lançamento da equipe"+equipeSelecionada.getNome(),JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(this, str, "Dados de lançamento da equipe" + equipeSelecionada.getNome(), JOptionPane.INFORMATION_MESSAGE);
     }//GEN-LAST:event_consultarButtonActionPerformed
 
     private void populaGrupoList() {
