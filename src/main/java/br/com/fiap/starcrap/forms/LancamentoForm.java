@@ -53,7 +53,11 @@ public class LancamentoForm extends javax.swing.JFrame {
         anguloLancamento = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         velocidadeVento = new javax.swing.JTextField();
-        data = new javax.swing.JFormattedTextField();
+        try {
+            data = new javax.swing.JFormattedTextField(new MaskFormatter("##/##/####"));
+        } catch (ParseException e) {
+            JOptionPane.showMessageDialog(this, "Data inválida.", "Corrija!", JOptionPane.WARNING_MESSAGE);
+        }
         jLabel5 = new javax.swing.JLabel();
         btnFoguete = new javax.swing.JButton();
         btnVoltar = new javax.swing.JButton();
